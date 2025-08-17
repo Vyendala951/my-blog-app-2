@@ -23,12 +23,12 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
     Route::get('/posts/edit/{post}', [PostController::class, 'edit'])->name('posts.edit');
     Route::post('/posts/save', [PostController::class, 'save'])->name('posts.save');
-    Route::get('/posts/delete/{post}', [PostController::class, 'delete'])->name('posts.delete');
+    Route::delete('/posts/delete/{post}', [PostController::class, 'delete'])->name('posts.delete');
 
     // Category routes
     Route::get('/categories/all', [CategoryController::class, 'index'])->name('categories.all');
     Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
     Route::get('/categories/edit/{category}', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::post('/categories/save', [CategoryController::class, 'save'])->name('categories.save');
-    Route::get('/categories/delete/{category}', [CategoryController::class, 'delete'])->name('categories.delete');
+    Route::delete('/categories/delete/{category}', [CategoryController::class, 'delete'])->name('categories.delete');
 });
