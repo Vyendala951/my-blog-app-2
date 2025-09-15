@@ -23,6 +23,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'type', // add this if you seed it
+
     ];
 
     /**
