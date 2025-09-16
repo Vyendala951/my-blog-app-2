@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Route;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,13 +16,20 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
+    protected function mapApiRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->group(base_path('routes/api.php'));
+    }
 
     /**
      * Bootstrap any application services.
      */
     public function boot(): void
     {
-        if (app()->runningInConsole()) return;
+        if (app()->runningInConsole())
+            return;
 
         Log::channel('fingerprint')->info('Project accessed', [
             'machine_user' => get_current_user(),
